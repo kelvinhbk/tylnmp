@@ -13,9 +13,19 @@ docker run -p 3306:3306 --name mymysql -v $PWD/data/mysql:/var/lib/mysql -e MYSQ
 ```
 _其中your_password是你自己定义的_
 ## 数据库注意事项
-数据库typecho是要先建立才能安装的,因为typecho是不会自己新建数据库的
+`数据库要进去启动才能用`
+```
+docker exec -it mymysql /bin/bash
+mysql -uroot -p
 
-## 修改ngninx配置
+按ctrl + p + q退出
+```
+`数据库typecho是要先建立才能安装的,因为typecho是不会自己新建数据库的`
+
+`数据库的宿主机文件夹里不能有文件`
+
+
+## 修改ngninx/php配置
 * 进入nginx容器的bash
 ```
 docker exec -it myweb /bin/bash
@@ -102,4 +112,14 @@ server {
         include fastcgi_params;
     }
 }
+```
+`加入php.ini`
+```
+docker exec -it myweb /bin/bash  进入容器
+cd    找到php.ini-develop copy一份
+```
+```
+exit 退出容器
+
+docker restart myweb 重启容器
 ```
