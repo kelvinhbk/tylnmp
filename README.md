@@ -4,7 +4,7 @@
 ## nginx+php
 ```
 docker pull richavey/nginx-php-fpm
-docker run -p 80:80 --name myweb -v $PWD/www/html:/var/www/html -v $PWD/nginx/nginx.conf:/etc/nginx/nginx.conf -d richarvey/nginx-php-fpm
+docker run -p 80:80 --name myweb -v $PWD/www/html:/var/www/html -d richarvey/nginx-php-fpm
 ```
 ## mysql
 ```
