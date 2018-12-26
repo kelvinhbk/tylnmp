@@ -121,6 +121,7 @@ server {
 ```
 docker exec -it myweb /bin/bash  进入容器
 cd    找到php.ini-develop copy一份
+php -i |grep php.ini 
 ```
 ```
 exit 退出容器
