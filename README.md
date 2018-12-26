@@ -9,10 +9,12 @@ docker run -p 80:80 --name myweb -v $PWD/www/html:/var/www/html -v $PWD/nginx/ng
 ## mysql
 ```
 docker pull mysql
-docker run -p 3306:3306 --name mymysql -v $PWD/data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=your_password -d mysql
+docker run -p 3306:3306 --name mymysql -v /opt/data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=your_password -d mysql
 ```
 _其中your_password是你自己定义的_
 ## 数据库注意事项
+`数据挂在文件夹外面比较好`
+
 `数据库要进去启动才能用`
 ```
 docker exec -it mymysql /bin/bash
@@ -23,6 +25,8 @@ mysql -uroot -p
 `数据库typecho是要先建立才能安装的,因为typecho是不会自己新建数据库的`
 
 `数据库的宿主机文件夹里不能有文件`
+
+`如果是本地开发,使用docker inspecter (id后两位) 查看ip地址,网关就是宿主机的
 
 
 ## 修改ngninx/php配置
